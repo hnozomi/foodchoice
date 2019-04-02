@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0,minimum-scale=1.0">
+<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/style.css') }}">
+<title>献立</title>
+</head>
+<body>
+  <header>
+    <img src="/static/images/test_picture3.jpg" alt="写真" class="pic" width="360">
+    <div class="wrapper">
+    <div class="header-left"><a href="{{ url_for('index')}}" class="title_name">今日の献立</a></div>
+    <div class="header-right">
+    <ul>
+      <li><a href="{{ url_for('add_task')}}" class="btn">食事の追加</a></li>
+      <li><a href="{{ url_for('show_task')}}" class="btn">食事の一覧表示</a></li>
+    </ul>
+
+     </div>
+   </div>
+  </header>
+
+  <br>
+  <div class=container>
+
+      <div class="choice">
+        <form action = {{ url_for('choice_task')}} method="get">
+           <input type="submit" name=food value="今日のご飯はこれだ！" class="btn2">
+        </form>
+      </div>
+</body>
+</html>

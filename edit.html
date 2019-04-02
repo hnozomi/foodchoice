@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0,minimum-scale=1.0">
+<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/style.css') }}">
+<title>食料追加</title>
+</head>
+<body>
+    <h1>食料を管理する</h1>
+
+    <form method="post" action="{% if type == 'add' %}{{ url_for('add_task', id=todo['id'])}}{% endif %}">
+        {% if error_list %}
+        <ul>
+        {% for v in error_list %}
+            <li>{{ v }}</li>
+        {% endfor %}
+        </ul>
+        {% endif %}
+        <p>食べ物<br/><input type="text" name="name" value="{{ todo['name'] }}"></p>
+        <p>購入数<br/><input type="text" name="number" value="{{ todo['number'] }}"></p>
+        {% if type == 'edit' %}
+        {% endif %}
+        <p>金額<br/><input type="text" name="price" value="{{ todo['price'] }}"></p>
+        {% if type == 'add' %}
+        <button type="submit">食料を追加する</button>
+
+        {% else %}
+        <button type="submit">食料を編集する</button>
+        {% endif %}
+    </form>
+
+  </br>
+  <a href="/">トップに戻る</a>
+
+</body>
+</html>

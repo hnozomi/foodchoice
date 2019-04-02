@@ -1,0 +1,20 @@
+
+table {
+		border-collapse: collapse;
+		text-align: left;
+		line-height: 1.5;
+		border: 1px solid #ccc;
+		width: 100%;
+}
+
+th {
+		padding: 10px;
+		font-weight: bold;
+		background: #ccc;
+	  color: black;
+	}
+td {
+		padding: 10px;
+		vertical-align: top;
+		border-bottom: 1px solid #ccc;
+}

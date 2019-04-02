@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0,minimum-scale=1.0">
+<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/style.css') }}">
+<title>食事管理</title>
+</head>
+<body>
+    <h1>一覧表</h1>
+
+
+    <table>
+        <tr>
+            <th>食べ物</th>
+            <th>残数</th>
+            <th>金額</th>
+            <th></th>
+        </tr>
+        {% for v in todo_list %}
+        <tr>
+            <td>{{ v['name'] }}</td>
+            <td>{{ v['number'] }}</td>
+            <td>{{ v['price'] }}</td>
+            <td><a href="{{ url_for('delete', id=v['id'])}}">削除</a></td>
+        </tr>
+        {% endfor %}
+      </table>
+
+      <br>
+        <a href="/">トップに戻る</a>
+      </br>
+
+
+</body>
+  </html>

@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0,minimum-scale=1.0">
+<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/style.css') }}">
+<title>献立</title>
+</head>
+<body>
+  <header>
+    <img src="/static/images/test_picture3.jpg" alt="写真" class="pic" width="360">
+    <div class="wrapper">
+    <div class="header-left"><a href="{{ url_for('index')}}" class="title_name">今日の献立</a></div>
+    <div class="header-right">
+    <ul>
+      <li><a href="{{ url_for('add_task')}}" class="btn">食事の追加</a></li>
+      <li><a href="{{ url_for('show_task')}}" class="btn">食事の一覧表示</a></li>
+    </ul>
+
+     </div>
+   </div>
+  </header>
+
+  <br>
+  <div class=container>
+
+      <div class="choice">
+        <form action = {{ url_for('choice_task')}} method="get">
+           <input type="submit" name=food value="今日のご飯はこれだ！" class="btn2">
+        </form>
+      </div>
+    <div>
+      <br>
+      <div class="choice_food">
+
+      {% if food == None %}
+
+       <p>{{ food }}</p>
+
+      {% else %}
+
+        {% if food %}
+
+            <p>今日のご飯は{{ food.name }}にしますか？</p>
+
+                  <div class="decide">
+
+                       <ul class="center_text">
+
+                                <li class="center_one">
+                                <form action = "{{ url_for('decide_food')}}" method="post">
+                                   <input type="submit" name="food_incle" value="{{ food.name }}に決定" class="btn1 left11">
+                                </form>
+                                </li>
+
+                                <li class="center_one">
+                                <form action = "{{ url_for('choice_task')}}" method="post">
+                                   <input type="submit" name="food" value="違うのにする" class="btn1 right11">
+                                </form>
+                                </li>
+
+                        </ul>
+                  </div>
+
+         {% else %}
+
+                  {% if math_out == 0 %}
+
+                        <p>{{ decide }}がなくなりました。補充しましょう</p>
+
+                  {% else %}
+
+                        <p> {{ decide }}は、残り{{ math_out }}個です。</p>
+
+                  {% endif %}
+
+          {% endif %}
+
+      {% endif %}
+
+      </div>
+    </div>
+
+
+
+  </div>
+    <!-- <table>
+        <tr>
+            <th>食べ物</th>
+            <th>残数</th>
+            <th>金額</th>
+            <th></th>
+        </tr>
+        {% for v in todo_list %}
+        <tr>
+            <td><a href="{{ url_for('edit', id=v['id'])}}">{{ v['name'] }}</a></td>
+            <td>{{ v['number'] }}</td>
+            <td>{{ v['price'] }}</td>
+            <td><a href="{{ url_for('delete', id=v['id'])}}">削除</a></td>
+        </tr>
+        {% endfor %}
+    </table> -->
+
+</body>
+</html>
